@@ -3,8 +3,9 @@ import { ShopContext } from "../../context/shop-context";
 import { PRODUCTS } from "../../products";
 import { CartItem } from "./cart-item";
 import { useNavigate } from "react-router-dom";
-
 import "./cart.css";
+let url = "https://demo.paypal.com/us/demo/navigation?merchant=braintree&page=shipping";
+
 export const Cart = () => {
   const { cartItems, getTotalCartAmount, checkout } = useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
@@ -30,12 +31,8 @@ export const Cart = () => {
           <button onClick={() => navigate("/")}> Continue Shopping </button>
           <button
             onClick={() => {
-              checkout();
-              navigate("/checkout");
-            }}
-          >
-            {" "}
-            Checkout{" "}
+              window.location.href = url; }}>
+            Checkout
           </button>
         </div>
       ) : (
